@@ -33,13 +33,27 @@ class MultiHeadAttention(nn.Module):
         self.W_k = nn.Linear(d_model, d_model, bias=False)
         self.W_v = nn.Linear(d_model, d_model, bias=False)
         self.W_o = nn.Linear(d_model, d_model, bias=False)
+        
+        # Deterministic FFN to replace Softmax (maps 1D scalar score -> 16D -> 1D scalar weight)
+        self.score_fc1 = nn.Linear(1, 16)
+        self.score_fc2 = nn.Linear(16, 1)
+        
         self.dropout = nn.Dropout(dropout)
 
     def attention(self, Q, K, V, mask=None):
         scores = torch.matmul(Q, K.transpose(-2, -1)) / math.sqrt(self.d_k)
         if mask is not None:
             scores = scores.masked_fill(mask == 0, float("-inf"))
-        weights = F.softmax(scores, dim=-1)
+        
+        # Replaced Softmax with a deterministic Fully Connected Feed-Forward Network
+        # This transforms the raw attention scores deterministically instead of normalizing them.
+        B, H, L, _ = scores.shape
+        scores_expanded = scores.unsqueeze(-1) # Add feature dimension: [B, H, L, L, 1]
+        
+        # Pass through deterministic FFN (Linear -> ReLU -> Linear)
+        hidden = F.relu(self.score_fc1(scores_expanded))
+        weights = self.score_fc2(hidden).squeeze(-1) # Remove feature dimension: [B, H, L, L]
+        
         return torch.matmul(self.dropout(weights), V), weights
 
     def forward(self, Q_in, K_in, V_in, mask=None):

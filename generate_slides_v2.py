@@ -73,7 +73,7 @@ def build_short_presentation():
     add_textbox(slide, "• Required 120,000 labelled training examples\n• Sequential processing (slow on long texts)\n• Achieved ~89.8% accuracy after 15 mins training", 1, 2.2, 5, 2, size=14, color=GRAY)
 
     add_textbox(slide, "Modern Hugging Face Transformer", 7, 1.5, 5, 0.5, size=20, bold=True, color=NAVY)
-    add_textbox(slide, "• facebook/bart-large-mnli (406M parameters)\n• Zero-Shot: Requires NO labelled data\n• Fully parallelized processing (Attention mechanism)\n• Achieves ~98.2% accuracy instantly", 7, 2.2, 5, 2, size=14, color=GRAY)
+    add_textbox(slide, "• facebook/bart-large-mnli (406M parameters)\n• Zero-Shot: Requires NO labelled data\n• Custom Deterministic Feed-Forward Attention (No Softmax)\n• Achieves ~98.2% accuracy instantly", 7, 2.2, 5, 2, size=14, color=GRAY)
     
     add_rect(slide, 1, 4.5, 11.333, 2, WHITE)
     add_textbox(slide, "How Zero-Shot Works", 1.2, 4.7, 11, 0.5, size=18, bold=True, color=NAVY)
