@@ -102,6 +102,19 @@ def build_short_presentation():
 
     add_textbox(slide, "The transition from manual tagging to Hugging Face Transformers eliminates processing bottlenecks and drastically reduces operational costs across publishing and finance sectors.", 1, 5.5, 11.333, 1, size=18, color=GRAY, align=PP_ALIGN.CENTER)
 
+    # --- SLIDE 5: PROJECT LINKS & RESOURCES ---
+    slide = prs.slides.add_slide(blank_layout)
+    add_rect(slide, 0, 0, 13.333, 7.5, BG_COLOR)
+    add_rect(slide, 0, 0, 13.333, 1, NAVY)
+    add_textbox(slide, "Project Links & Resources", 0.5, 0.2, 10, 0.6, size=28, bold=True, color=WHITE)
+    
+    add_rect(slide, 1, 1.5, 11.333, 5, WHITE)
+    
+    add_textbox(slide, "Source Code (GitHub Repository)", 1.5, 2.0, 10, 0.5, size=24, bold=True, color=NAVY)
+    add_textbox(slide, "https://github.com/gy22122004-forge/News-Classification", 1.5, 2.7, 10, 0.5, size=20, color=GRAY)
+    
+    add_textbox(slide, "Live AI Demo (Deployment URL)", 1.5, 4.0, 10, 0.5, size=24, bold=True, color=NAVY)
+    add_textbox(slide, "https://ai-news-classifier-gaurav.loca.lt", 1.5, 4.7, 10, 0.5, size=20, color=GRAY)
     # --- SAVE ---
     out_path = os.path.join(os.path.dirname(__file__), "News_Classification_Short.pptx")
     prs.save(out_path)
