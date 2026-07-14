@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Generated output (not needed in deployment)
+Gaurav_Yadav_AI_Demo_Programmer.pptx
+generate_slides.py
+start.sh
+
+# HF model cache (downloaded at runtime)
+# .cache/  ← do NOT ignore this inside Docker — it's needed
+
+# Logs
+*.log
