@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News Classifier — AI Demo | Hugging Face Transformer</title>
+  <title>News Classifier — AI Demo</title>
   <meta name="description" content="Live AI news classification demo using facebook/bart-large-mnli Transformer model from Hugging Face. Zero-shot classification of 8 news categories." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,7 +22,6 @@
       </div>
       <h1 class="hero-title">
         News Classification
-        <span class="hero-accent">with Hugging Face</span>
       </h1>
       <p class="hero-desc">
         Zero-shot news classification powered by <strong>facebook/bart-large-mnli</strong> —
@@ -236,7 +235,7 @@
       </div>
 
       <div class="code-tabs-nav">
-        <button class="tab-btn active" data-tab="transformer">Transformer (HuggingFace)</button>
+        <button class="tab-btn active" data-tab="transformer">Transformer Model</button>
         <button class="tab-btn" data-tab="rnn">RNN / Bi-LSTM (PyTorch)</button>
         <button class="tab-btn" data-tab="api">FastAPI Endpoint</button>
         <button class="tab-btn" data-tab="pipeline">Pipeline Demo</button>
@@ -251,14 +250,14 @@
               <span class="code-dot yellow"></span>
               <span class="code-dot green"></span>
             </div>
-            <span class="code-lang">Python — HuggingFace Transformer · Zero-Shot Classification</span>
+            <span class="code-lang">Python — Transformer · Zero-Shot Classification</span>
             <span class="code-filename">main.py</span>
           </div>
           <pre class="code-body"><span class="kw">from</span> transformers <span class="kw">import</span> pipeline
 <span class="kw">from</span> fastapi <span class="kw">import</span> FastAPI
 <span class="kw">from</span> pydantic <span class="kw">import</span> BaseModel
 
-<span class="comment"># ① Load BART-large-MNLI from Hugging Face</span>
+<span class="comment"># ① Load BART-large-MNLI</span>
 <span class="comment">#    406M params | fine-tuned on 393k MNLI sentence pairs</span>
 <span class="comment">#    Enables zero-shot classification via NLI entailment scoring</span>
 classifier = pipeline(
