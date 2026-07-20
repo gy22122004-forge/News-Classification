@@ -10,7 +10,7 @@ import os
 # ─── App Setup ────────────────────────────────────────────────────────────────
 app = FastAPI(
     title="News Classifier API",
-    description="Classifies news text into categories using facebook/bart-large-mnli",
+    description="Classifies news text into categories using MoritzLaurer/deberta-v3-xsmall-zeroshot-v1.1-all-33",
     version="1.0.0",
 )
 
@@ -26,12 +26,12 @@ app.add_middleware(
 PORT = int(os.environ.get("PORT", 7860))
 
 # ─── Model Loading ─────────────────────────────────────────────────────────────
-print("🔄 Loading Hugging Face model (facebook/bart-large-mnli)...")
+print("🔄 Loading Hugging Face model (MoritzLaurer/deberta-v3-xsmall-zeroshot-v1.1-all-33)...")
 print("   This may take a moment on first run while the model downloads...")
 
 classifier = pipeline(
     "zero-shot-classification",
-    model="facebook/bart-large-mnli",
+    model="MoritzLaurer/deberta-v3-xsmall-zeroshot-v1.1-all-33",
 )
 
 print("✅ Model loaded successfully!")
@@ -72,7 +72,7 @@ class ClassifyResponse(BaseModel):
 # ─── Routes ────────────────────────────────────────────────────────────────────
 @app.get("/health")
 def health_check():
-    return {"status": "ok", "model": "facebook/bart-large-mnli", "categories": CATEGORIES}
+    return {"status": "ok", "model": "MoritzLaurer/deberta-v3-xsmall-zeroshot-v1.1-all-33", "categories": CATEGORIES}
 
 
 @app.post("/classify", response_model=ClassifyResponse)
