@@ -16,14 +16,10 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:8000",
-        "http://127.0.0.1:8000",
-        "https://huggingface.co" # For HF spaces embed
-    ],
-    allow_credentials=True,
-    allow_methods=["GET", "POST"], # Restrict methods
-    allow_headers=["Authorization", "Content-Type"], # Restrict headers
+    allow_origins=["*"],  # Allow all origins for Render deployment
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
 )
 
 # ─── Port (7860 for HF Spaces, 8000 for local) ────────────────────────────────
