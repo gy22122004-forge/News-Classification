@@ -1,6 +1,6 @@
 """
 FastAPI Backend REST API
-Model   : facebook/bart-large-mnli (HuggingFace)
+Model   : facebook/bart-large-cnn (HuggingFace)
 Run     : uvicorn api_backend:app --port 8000 --reload
 """
 
@@ -20,8 +20,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-print("Loading facebook/bart-large-mnli...")
-classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+print("Loading facebook/bart-large-cnn...")
+classifier = pipeline("zero-shot-classification", model="facebook/bart-large-cnn")
 print("✓ Model ready!\n")
 
 CATEGORIES = ["Politics", "Sports", "Business", "Technology", "Health", "Entertainment", "Science", "World News"]
